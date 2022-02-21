@@ -14,33 +14,6 @@ const App = () => {
   const increaseNeutral = () => setNeutral(neutral + 1)
   const increaseBad = () => setBad(bad + 1)
 
-
-  if (all === 0) {
-      return ( 
-        <div> 
-            <Header 
-                text="give feedback"
-            />
-            <Buttons 
-                onClick={increaseGood} 
-                text="good"
-            />
-            <Buttons 
-                onClick={increaseNeutral}
-                text="neutral"
-            />
-            <Buttons 
-                onClick={increaseBad}
-                text="bad"
-            />
-            <Header 
-                text="statistics"
-            />
-            <p>No feedback given</p>
-        </div> 
-      )
-  }
-
     return (
         <div>
             <Header 
@@ -62,29 +35,13 @@ const App = () => {
                 text="statistics"
             />
             <Statistics 
-                text="good"
-                count={good}
-            />
-            <Statistics 
-                text="neutral"
-                count={neutral}
-            />
-            <Statistics
-                text="bad"
-                count={bad}
-            />
-            <Statistics 
-                text="all"
-                count={all}
-            />
-            <Statistics
-                text="average"
-                count={avg}
-            />
-            <Statistics
-                text="positive"
-                count={positive}
-            />
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                all={all}
+                avg={avg}
+                positive={positive}
+                />
         </div>
     )
 }
@@ -99,9 +56,47 @@ const Header = ({text}) => (
     <h1>{text}</h1>
 )
 
-const Statistics = ({text, count}) => (
+const StatisticLine = ({text, count}) => (
     <p>{text} {count}</p>
 )
 
+const Statistics = ({good, neutral, bad, all, avg, positive}) => {
+    if (all === 0) {
+        return ( 
+            <div> 
+                No feedback given
+            </div>
+        )
+    }
+
+    return (
+        <div> 
+            <StatisticLine 
+                text="good"
+                count={good}
+            />
+            <StatisticLine
+                text="neutral"
+                count={neutral}
+            />
+            <StatisticLine
+                text="bad"
+                count={bad}
+            />
+            <StatisticLine
+                text="all"
+                count={all}
+            />
+            <StatisticLine
+                text="average"
+                count={avg}
+            />
+            <StatisticLine
+                text="positive"
+                count={positive}
+            />
+        </div>
+    )
+}
 
 export default App
