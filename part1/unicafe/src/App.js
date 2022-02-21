@@ -41,7 +41,7 @@ const App = () => {
                 all={all}
                 avg={avg}
                 positive={positive}
-                />
+            />
         </div>
     )
 }
@@ -56,9 +56,14 @@ const Header = ({text}) => (
     <h1>{text}</h1>
 )
 
-const StatisticLine = ({text, count}) => (
-    <p>{text} {count}</p>
+const StatisticLine = ({text, count}) => {
+    return ( 
+    <tr>
+        <td>{text}</td>
+        <td> {count}</td>
+    </tr>
 )
+}
 
 const Statistics = ({good, neutral, bad, all, avg, positive}) => {
     if (all === 0) {
@@ -70,32 +75,34 @@ const Statistics = ({good, neutral, bad, all, avg, positive}) => {
     }
 
     return (
-        <div> 
-            <StatisticLine 
-                text="good"
-                count={good}
-            />
-            <StatisticLine
-                text="neutral"
-                count={neutral}
-            />
-            <StatisticLine
-                text="bad"
-                count={bad}
-            />
-            <StatisticLine
-                text="all"
-                count={all}
-            />
-            <StatisticLine
-                text="average"
-                count={avg}
-            />
-            <StatisticLine
-                text="positive"
-                count={positive}
-            />
-        </div>
+        <table> 
+            <tbody>
+                <StatisticLine 
+                    text="good"
+                    count={good}
+                />
+                <StatisticLine
+                    text="neutral"
+                    count={neutral}
+                />
+                <StatisticLine
+                    text="bad"
+                    count={bad}
+                />
+                <StatisticLine
+                    text="all"
+                    count={all}
+                />
+                <StatisticLine
+                    text="average"
+                    count={avg}
+                />
+                <StatisticLine
+                    text="positive"
+                    count={positive}
+                />
+            </tbody> 
+        </table>
     )
 }
 
