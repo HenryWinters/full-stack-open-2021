@@ -27,8 +27,6 @@ const App = () => {
     copy[selected] += 1
     setPoints(copy)
 
-    console.log(copy);
-
     let mostVotes = 0; 
     for (let i = 0; i < copy.length; i++) {
       if (mostVotes < copy[i]) {
