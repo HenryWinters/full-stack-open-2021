@@ -1,5 +1,11 @@
 import React from 'react'
 
-const Total = ({ sum }) => <p>Number of exercises {sum}</p>
+const Total = ({ parts }) => {
+    let sum = parts.reduce((partialSum, partObj) => partialSum + partObj.exercises, 0);
+
+    return (
+    <p>total of {sum} exercises</p>
+    )
+}
 
 export default Total 
