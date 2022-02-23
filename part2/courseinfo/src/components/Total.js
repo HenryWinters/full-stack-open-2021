@@ -4,7 +4,7 @@ const Total = ({ parts }) => {
     let sum = parts.reduce((partialSum, partObj) => partialSum + partObj.exercises, 0);
 
     return (
-    <p>total of {sum} exercises</p>
+    <p>Total of {sum} exercises</p>
     )
 }
 
