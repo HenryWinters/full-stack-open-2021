@@ -11,16 +11,11 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault();
     const newNameObj = {name: newName}
-    if (areAnyEqualObjsInArr(newNameObj, persons)) {
-      alert(`${newName} is already added to phonebook`)
-    } else setPersons(persons.concat(newNameObj))
-  }
-
-  const areAnyEqualObjsInArr = (obj, objArr) => {
-    for (let i = 0; i < objArr.length; i++) {
-      if (areTheseObjectsEqual(obj, objArr[i])) {
-      return true
-      }
+    const hasDuplicateObj = persons.some(obj => areTheseObjectsEqual(newNameObj, obj))
+    if (hasDuplicateObj) {
+      alert (`${newName} is already added to phonebook`)
+    } else {
+      setPersons(persons.concat(newNameObj))
     }
   }
 
