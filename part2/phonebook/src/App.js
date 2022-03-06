@@ -10,7 +10,28 @@ const App = () => {
   
   const addPerson = (event) => {
     event.preventDefault();
-    setPersons(persons.concat({name: newName}))
+    const newNameObj = {name: newName}
+    if (areAnyEqualObjsInArr(newNameObj, persons)) {
+      alert(`${newName} is already added to phonebook`)
+    } else setPersons(persons.concat(newNameObj))
+  }
+
+  const areAnyEqualObjsInArr = (obj, objArr) => {
+    for (let i = 0; i < objArr.length; i++) {
+      if (areTheseObjectsEqual(obj, objArr[i])) {
+      return true
+      }
+    }
+  }
+
+  const areTheseObjectsEqual = (first, second) => {
+    const al = Object.getOwnPropertyNames(first);
+    const bl = Object.getOwnPropertyNames(second);
+    if (al.length !== bl.length) return false; 
+    const hasAllKeys = al.every(value => !!bl.find(v => v === value));
+    if (!hasAllKeys) return false
+    for (const key of al) if (first[key] !== second[key]) return false; 
+    return true; 
   }
 
   const handleNameChange = (event) => {
