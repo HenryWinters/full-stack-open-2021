@@ -1,4 +1,4 @@
-const Search = ({newFilter, setNewFilter}) => {
+const Filter = ({newFilter, setNewFilter}) => {
 
     const handleFilterChange = (event) => {
         setNewFilter(event.target.value)
@@ -11,4 +11,4 @@ const Search = ({newFilter, setNewFilter}) => {
     )
 }
 
-export default Search 
+export default Filter 
