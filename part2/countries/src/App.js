@@ -7,7 +7,8 @@ import CountryDisplay from './Components/CountryDisplay'
 function App() {
 
   const [search, setSearch] = useState(''); 
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState([]);
+  const [show, setShow] = useState([]);
 
   useEffect(() => {
     axios
@@ -20,7 +21,7 @@ function App() {
   return (
     <div> 
       <Search search={search} setSearch={setSearch} />
-      <CountryDisplay countries={countries} setCountries={setCountries} search={search} />
+      <CountryDisplay countries={countries} search={search} show={show} setShow={setShow} />
     </div>
   );
 }

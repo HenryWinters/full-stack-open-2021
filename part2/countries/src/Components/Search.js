@@ -2,7 +2,7 @@
 const Search = ({search, setSearch}) => { 
   
     const handleSearch = (event) => { 
-        setSearch(event.target.value)
+        setSearch(event.target.value.toLowerCase())
     }
 
     return (

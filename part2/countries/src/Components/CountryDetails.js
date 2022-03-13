@@ -1,5 +1,5 @@
 const CountryDetails = ({country}) => { 
-    let languageArr = Object.keys(country[0].languages); 
+    const languageArr = Object.keys(country[0].languages); 
 
     return (
         <div>
