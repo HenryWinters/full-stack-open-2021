@@ -1,6 +1,3 @@
-import CountryDetails from './CountryDetails'
-import { useEffect } from 'react'
-
 const CountryName = ({country, setShow}) => { 
 
 
@@ -15,8 +12,6 @@ const CountryName = ({country, setShow}) => {
         </div> 
     )
 }
-
-
 
 export default CountryName 
 
