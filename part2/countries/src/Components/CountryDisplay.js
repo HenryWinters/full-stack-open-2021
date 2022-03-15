@@ -6,12 +6,10 @@ import { useEffect } from 'react'
 
 
 const CountryDisplay = ({countries, search, show, setShow}) => { 
-
-    const searchedCountries = countries.filter(country => country.name.common.toLowerCase().includes(search))
     
     useEffect(() => {
-        setShow(searchedCountries)
-    }, [search])
+        setShow(countries.filter(country => country.name.common.toLowerCase().includes(search)))
+    }, [search, setShow, countries])
 
     if (show.length > 10) {
         return (

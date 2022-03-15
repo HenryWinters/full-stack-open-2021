@@ -14,7 +14,7 @@ const CountryWeather = ({country}) => {
             setWeather(response.data)
             
           })
-    }, [country])
+    }, [country, lat, lon, api_key])
 
     if (Object.keys(weather).length) {
 
