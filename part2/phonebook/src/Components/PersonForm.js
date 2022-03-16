@@ -1,4 +1,5 @@
 import axios from 'axios'
+import personsService from '../services/personsService'
 
 const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setNewName}) => { 
 
@@ -9,14 +10,13 @@ const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setN
         if (hasDuplicateObj) {
           alert (`${newName} is already added to phonebook`)
         } else {
-          axios
-            .post('http://localhost:3001/persons', newPersonObj)
-            .then(response => {  
-                setPersons(persons.concat(response.data))
+            personsService
+              .addPersonToServer(newPersonObj)
+              .then(newPerson => {
+                setPersons(persons.concat(newPerson))
                 setNewName('')
                 setNewNumber('')
-                }
-            )
+              }) 
         }
       }
 
