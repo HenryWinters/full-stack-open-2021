@@ -1,13 +1,22 @@
+import axios from 'axios'
+
 const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setNewName}) => { 
 
     const addPerson = (event) => {
         event.preventDefault();
         const newPersonObj = {name: newName, number: newNumber}
-        const hasDuplicateObj = persons.some(obj => areTheseObjectsEqual(newPersonObj, obj))
+        const hasDuplicateObj = persons.some(obj => areTheseNamesEqual(newPersonObj, obj))
         if (hasDuplicateObj) {
           alert (`${newName} is already added to phonebook`)
         } else {
-          setPersons(persons.concat(newPersonObj))
+          axios
+            .post('http://localhost:3001/persons', newPersonObj)
+            .then(response => {  
+                setPersons(persons.concat(response.data))
+                setNewName('')
+                setNewNumber('')
+                }
+            )
         }
       }
 
@@ -19,14 +28,8 @@ const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setN
         setNewNumber(event.target.value)
     }
 
-    const areTheseObjectsEqual = (first, second) => {
-        const al = Object.getOwnPropertyNames(first);
-        const bl = Object.getOwnPropertyNames(second);
-        if (al.length !== bl.length) return false; 
-        const hasAllKeys = al.every(value => !!bl.find(v => v === value));
-        if (!hasAllKeys) return false
-        for (const key of al) if (first[key] !== second[key]) return false; 
-        return true; 
+    const areTheseNamesEqual = (first, second) => {
+        return JSON.stringify(first.name) === JSON.stringify(second.name)
     }
 
     return (
