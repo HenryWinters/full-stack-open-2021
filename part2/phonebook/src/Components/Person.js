@@ -4,10 +4,12 @@ import personsService from '../services/personsService'
 const Person = ({person, persons, setPersons}) => { 
 
     const deletePerson = (event) => {
-        const newList = []
-        personsService
-            .deletePersonFromServer(person.id)
-            setPersons(persons.filter(contact => contact.id !== person.id))
+        const result = window.confirm(`Delete ${person.name}?`)
+        if (result) {
+            personsService
+                .deletePersonFromServer(person.id)
+                setPersons(persons.filter(contact => contact.id !== person.id))
+            }
         }
 
     return (  
