@@ -1,8 +1,6 @@
-import axios from 'axios'
 import personsService from '../services/personsService'
-import Notification from './Notification.js'
 
-const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setNewName, notification, setNotification}) => { 
+const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setNewName, setNotification}) => { 
 
     const addPerson = (event) => {
         event.preventDefault();

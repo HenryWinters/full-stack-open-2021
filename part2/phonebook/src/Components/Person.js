@@ -1,7 +1,6 @@
-import axios from 'axios'
 import personsService from '../services/personsService'
 
-const Person = ({person, persons, setPersons}) => { 
+const Person = ({person, persons, setPersons, setNotification}) => { 
 
     const deletePerson = (event) => {
         const result = window.confirm(`Delete ${person.name}?`)
@@ -9,6 +8,10 @@ const Person = ({person, persons, setPersons}) => {
             personsService
                 .deletePersonFromServer(person.id)
                 setPersons(persons.filter(contact => contact.id !== person.id))
+                setNotification({message: `Deleted ${person.name}`, type: 'success'})
+                setTimeout(() => {
+                    setNotification({message: null, type: null})
+                  }, 5000)
             }
         }
 
