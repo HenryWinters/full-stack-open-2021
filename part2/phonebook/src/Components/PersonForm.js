@@ -6,6 +6,17 @@ const PersonForm = ({persons, setPersons, newNumber, setNewNumber, newName, setN
         event.preventDefault();
         const newPersonObj = {name: newName, number: newNumber}
         const isDuplicateName = persons.some(obj => areTheseNamesEqual(newPersonObj, obj))
+        if (newPersonObj.name.length === 0) {
+          setNotification({message: `Name is required`, type: 'error'})
+          setTimeout(() => {
+            setNotification({message: null, type: null})
+          }, 5000)
+        } else if (newPersonObj.number.length === 0) {
+          setNotification({message: `Number is required`, type: 'error'})
+          setTimeout(() => {
+            setNotification({message: null, type: null})
+          }, 5000)
+        } else 
         if (isDuplicateName) {
           const result = window.confirm(`${newName} is already added to the phonebook. Would you like to replace the old number with the new one?`)
           if(result) {
