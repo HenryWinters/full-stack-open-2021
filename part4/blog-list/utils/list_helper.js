@@ -24,7 +24,6 @@ const favoriteBlog = (blogs) => {
                 likes: blogs[i].likes
             }
         }
-        console.log(blogWithMostLikes)
     }
     return blogWithMostLikes
 }
