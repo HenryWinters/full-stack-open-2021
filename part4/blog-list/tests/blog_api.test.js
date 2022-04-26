@@ -65,7 +65,7 @@ test('a new valid blog can be added', async () => {
     
 })
 
-test('a new blog with missing likes property will default likes to 0', async () => {
+test('blog post with missing likes property will default likes to 0', async () => {
     const newBlog = {
         title: 'Missing Likes Test Blog',
         author: 'Mr Test 4',
@@ -84,7 +84,7 @@ test('a new blog with missing likes property will default likes to 0', async () 
     expect(newBlogInDB.likes).toBe(0)
 })
 
-test('blog missing title and author will return 400 Bad Request', async () => {
+test('blog post missing title and author will return 400 Bad Request', async () => {
     const newBlog = {
         url: 'Test URL 5',
         likes: 20
@@ -94,6 +94,46 @@ test('blog missing title and author will return 400 Bad Request', async () => {
         .post('/api/blogs')
         .send(newBlog)
         .expect(400)
+})
+
+test('blog deletion will succeed and return code 204', async () => {
+    const blogsAtStartJSON = await api.get('/api/blogs')
+    const blogsAtStart = blogsAtStartJSON.body
+    const blogToDelete = blogsAtStart[0]
+
+    await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(204)
+
+    const blogsAtEndJSON = await api.get('/api/blogs')
+    const blogsAtEnd = blogsAtEndJSON.body
+    expect(blogsAtEnd).toHaveLength(initialBlogs.length - 1)
+
+    const titles = blogsAtEnd.map(r => r.title)
+    expect(titles).not.toContain(blogToDelete.title)
+})
+
+test('blog modification will succeed', async () => {
+
+    const blogsAtStartJSON = await api.get('/api/blogs')
+    const blogsAtStart = blogsAtStartJSON.body
+    const blogToModify = blogsAtStart[0]
+
+    const modifiedBlog = {
+        title: 'Test Blog',
+        author: 'Mr. Test',
+        url: 'Test URL',
+        likes: 55
+    }
+
+    await api 
+        .put(`/api/blogs/${blogToModify.id}`)
+        .send(modifiedBlog)
+    
+    const blogsAfterPostJSON = await api.get('/api/blogs')
+    const blogAfterModification = blogsAfterPostJSON.body[0]
+    
+    expect(blogAfterModification.likes).toBe(55)
 })
 
 afterAll(() => {
