@@ -45,7 +45,7 @@ test('a new valid blog can be added', async () => {
         title: 'Test Blog 3',
         author: 'Mr Test 3',
         url: 'Test URL 3',
-        likes: 20
+        likes: 20,
     }
 
     await api
@@ -55,6 +55,7 @@ test('a new valid blog can be added', async () => {
         .expect('Content-Type', /application\/json/)
     
     const response = await api.get('/api/blogs')
+    console.log(response.body)
 
     const titles = response.body.map(blog => blog.title)
 

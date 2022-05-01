@@ -2,8 +2,18 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json 
 
 {
-    "title": "Test Blog",
-    "author": "Mr. Test",
-    "url": "www.test.com",
-    "likes": "100"
+    "title": "Test Blog 2",
+    "author": "Mr. Test 2",
+    "url": "www.test.com 2",
+    "likes": "200"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json 
+
+{
+    "username": "Test Person",
+    "name": "Test Person",
+    "password": "password"
 }
