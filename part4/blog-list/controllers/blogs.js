@@ -11,12 +11,13 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/', async (request, response) => {
   const body = request.body 
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
+  /* const decodedToken = jwt.verify(request.token, process.env.SECRET)
   
   if (!decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
-  const user = await User.findById(decodedToken.id)
+  const user = await User.findById(decodedToken.id) */
+  const user = request.user
 
   const blog = new Blog({
     title: body.title, 
@@ -30,18 +31,24 @@ blogsRouter.post('/', async (request, response) => {
   user.blogs = user.blogs.concat(savedBlog._id)
   await user.save() 
 
-  console.log(user)
   response.status(201).json(savedBlog) 
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
+  /* const decodedToken = jwt.verify(request.token, process.env.SECRET) */
+  const user = request.user
 
   const blogToDelete = await Blog.findById(request.params.id)
   
-  if (decodedToken.id === blogToDelete.user.toString()) {
+  if (user.id === blogToDelete.user.toString()) {
     await Blog.findByIdAndRemove(request.params.id)
+    const indexOfBlog = user.blogs.indexOf(request.params.id)
+    if (indexOfBlog > -1) {
+      user.blogs.splice(indexOfBlog, 1)
+    }
+    await user.save()
+    
     response.status(204).end()
   }
 })
