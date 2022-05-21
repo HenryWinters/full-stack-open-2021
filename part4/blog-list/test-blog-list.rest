@@ -38,3 +38,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc
     "url": "www.test.com 4",
     "likes": "765"
 }
+
+###
+DELETE http://localhost:3003/api/blogs/6271fde4ca1d6c0269cf15fa
+Content-Type: application/json 
+Authorization: bearer yeJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QgUGVyc29uIiwiaWQiOiI2MjZlNTdjOTA5MzUxMWM3Mjc4OGEyOGIiLCJpYXQiOjE2NTE2MzY0Nzh9.GrEv6CgQKtUR42Aux3mSuBsPsCNeV8heuF7vc2IikVQ
