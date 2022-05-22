@@ -13,7 +13,7 @@ describe('initially one user in database', () => {
         const user = new User({
             username: 'First User',
             name: 'Mr. First',
-            passwordHash: passwordHash 
+            passwordHash: passwordHash
         })
 
         await user.save() 

@@ -13,6 +13,7 @@ const requestLogger = (request, response, next) => {
 
 const tokenExtractor = (request, response, next) => {
     const authorization = request.get('authorization')
+    
     if (authorization && authorization.toLowerCase().startsWith('bearer')) {
       request.token = authorization.substring(7)
     }
@@ -21,12 +22,10 @@ const tokenExtractor = (request, response, next) => {
   }
 
 const userExtractor = async (request, reponse, next) => {
-  if (request.token) {
-    const decodedToken = jwt.verify(request.token, process.env.SECRET)
+  const decodedToken = jwt.verify(request.token, process.env.SECRET)
 
-    if (decodedToken.id) {
-      request.user = await User.findById(decodedToken.id)
-    }
+  if (decodedToken.id) {
+    request.user = await User.findById(decodedToken.id)
   }
 
   next()

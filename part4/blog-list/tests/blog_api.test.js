@@ -9,15 +9,30 @@ const initialBlogs = [
         title: 'Test Blog',
         author: 'Mr. Test',
         url: 'Test URL',
-        likes: 10
+        likes: 10,
     },
     {
         title: 'Test Blog 2',
         author: 'Mr. Test 2',
         url: 'Test URL 2',
-        likes: 15
+        likes: 15,
     }
 ]
+
+const user = {
+    username: 'First User',
+    password: 'firstPassword',
+    id: '6289811fb65bbe447a570f59'
+}
+
+let loggedInToken = ''
+beforeAll(async () => {
+    const response = await api
+        .post('/api/login')
+        .send(user)
+    
+    loggedInToken = `bearer ${response.body.token}`
+})
 
 beforeEach(async () => {
     await Blog.deleteMany({})
@@ -50,12 +65,12 @@ test('a new valid blog can be added', async () => {
 
     await api
         .post('/api/blogs')
+        .set('Authorization', loggedInToken)
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
     
     const response = await api.get('/api/blogs')
-    console.log(response.body)
 
     const titles = response.body.map(blog => blog.title)
 
@@ -64,6 +79,20 @@ test('a new valid blog can be added', async () => {
         'Test Blog 3'
     )
     
+})
+
+test('a new blog with no token fails with code 401', async () => {
+    const newBlog = {
+        title: 'Test Blog 3',
+        author: 'Mr Test 3',
+        url: 'Test URL 3',
+        likes: 20,
+    }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(401)
 })
 
 test('blog post with missing likes property will default likes to 0', async () => {
@@ -75,6 +104,7 @@ test('blog post with missing likes property will default likes to 0', async () =
 
     await api
         .post('/api/blogs')
+        .set('Authorization', loggedInToken)
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -93,6 +123,7 @@ test('blog post missing title and author will return 400 Bad Request', async () 
 
     await api
         .post('/api/blogs')
+        .set('Authorization', loggedInToken)
         .send(newBlog)
         .expect(400)
 })
@@ -104,6 +135,7 @@ test('blog deletion will succeed and return code 204', async () => {
 
     await api
         .delete(`/api/blogs/${blogToDelete.id}`)
+        .set('Authorization', loggedInToken)
         .expect(204)
 
     const blogsAtEndJSON = await api.get('/api/blogs')
