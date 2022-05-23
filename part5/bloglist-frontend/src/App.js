@@ -16,6 +16,18 @@ const App = () => {
     )  
   }, [])
 
+  useEffect(() => { 
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+    }
+  }, [])
+
+  const handleLogOut = (event) => { 
+    window.localStorage.removeItem('loggedBlogAppUser')
+  }
+
   if (user === null) {
     return (
       <div> 
@@ -26,6 +38,8 @@ const App = () => {
   } else return (
       <div>
         <h2>Blogs</h2>
+        <p>{user.name} is logged in</p>
+        <button onClick={handleLogOut}>Log Out</button>
         {blogs.map(blog =>
           <Blog key={blog.id} blog={blog} />
         )}

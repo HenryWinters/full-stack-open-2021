@@ -8,6 +8,10 @@ const Login = ({username, password, setUsername, setPassword, user, setUser}) =>
             const user = await loginService.login({
               username, password,
             })
+            
+            window.localStorage.setItem(
+                'loggedBlogAppUser', JSON.stringify(user)
+            )
             setUser(user)
             setUsername('')
             setPassword('')
