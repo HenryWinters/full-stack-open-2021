@@ -1,4 +1,5 @@
 import loginService from '../services/login'
+import blogService from '../services/blogs'
 
 const Login = ({username, password, setUsername, setPassword, user, setUser}) => { 
 
@@ -12,6 +13,7 @@ const Login = ({username, password, setUsername, setPassword, user, setUser}) =>
             window.localStorage.setItem(
                 'loggedBlogAppUser', JSON.stringify(user)
             )
+            blogService.setToken(user.token)
             setUser(user)
             setUsername('')
             setPassword('')
