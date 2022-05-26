@@ -1,7 +1,12 @@
+import { useState } from 'react'
 import blogService from '../services/blogs'
 
-const BlogForm = ({ title, setTitle, author, setAuthor, url, setUrl, blogs, setBlogs, setNotification }) => {
+const BlogForm = ({ blogs, setBlogs, setNotification, blogFormRef }) => {
     
+    const [title, setTitle] = useState('')
+    const [author, setAuthor] = useState('')
+    const [url, setUrl] = useState('')
+
     const handleBlogCreation = async (event) => { 
         event.preventDefault()
         if (!title || !author || !url) {
@@ -12,6 +17,7 @@ const BlogForm = ({ title, setTitle, author, setAuthor, url, setUrl, blogs, setB
         } else 
         
         try {
+            blogFormRef.current.toggleVisibility()
             const blog = { title, author, url }
             const response = await blogService.createBlog(blog)
             setBlogs(blogs.concat(response)) 

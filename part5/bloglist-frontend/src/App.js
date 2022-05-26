@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import Login from './components/Login'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
+import Togglable from './components/Togglable'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
-  const [newBlog, setNewBlog] = useState({})
   const [notification, setNotification] = useState({message: null, type: null})
+
+  const blogFormRef = useRef()
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -46,7 +43,7 @@ const App = () => {
       <div> 
         <h2>Log in to application</h2>
         <Notification notification={notification} />
-        <Login username={username} password={password} setUsername={setUsername} setPassword={setPassword} user={user} setUser={setUser} setNotification={setNotification} />
+        <Login setUser={setUser} setNotification={setNotification} />
       </div> 
     )
   } else return (
@@ -55,8 +52,9 @@ const App = () => {
         <Notification notification={notification} />
         <p>{user.name} is logged in</p>
         <button onClick={handleLogOut}>Log Out</button>
-        <h2>Create New</h2>
-        <BlogForm title={title} setTitle={setTitle} author={author} setAuthor={setAuthor} url={url} setUrl={setUrl} newBlog={newBlog} setNewBlog={setNewBlog} blogs={blogs} setBlogs={setBlogs} setNotification={setNotification} />
+        <Togglable buttonLabel='Create new blog' ref={blogFormRef}>
+          <BlogForm blogs={blogs} setBlogs={setBlogs} setNotification={setNotification} blogFormRef={blogFormRef} />
+        </Togglable>
         {blogs.map(blog =>
           <Blog key={blog.id} blog={blog} />
         )}
