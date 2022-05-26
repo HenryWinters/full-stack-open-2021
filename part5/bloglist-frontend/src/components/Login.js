@@ -1,7 +1,7 @@
 import loginService from '../services/login'
 import blogService from '../services/blogs'
 
-const Login = ({username, password, setUsername, setPassword, user, setUser}) => { 
+const Login = ({ username, password, setUsername, setPassword, user, setUser, setNotification }) => { 
 
     const handleLogin = async (event) => {
         event.preventDefault()
@@ -17,8 +17,15 @@ const Login = ({username, password, setUsername, setPassword, user, setUser}) =>
             setUser(user)
             setUsername('')
             setPassword('')
-          } catch (error) {
-            
+            setNotification({message: `${username} is now logged in`})
+            setTimeout(() => {
+                setNotification({message: null, type: null})
+            }, 5000)
+          } catch (exception) {
+            setNotification({message: exception.response.data.error, type: 'error'})
+            setTimeout(() => {
+                setNotification({message: null, type: null})
+            }, 5000)
           }
     }
 

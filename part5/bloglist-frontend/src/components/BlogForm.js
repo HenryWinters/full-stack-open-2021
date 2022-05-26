@@ -1,16 +1,33 @@
 import blogService from '../services/blogs'
 
-const BlogForm = ({ title, setTitle, author, setAuthor, url, setUrl, blogs, setBlogs, newBlog, setNewBlog }) => {
+const BlogForm = ({ title, setTitle, author, setAuthor, url, setUrl, blogs, setBlogs, setNotification }) => {
     
     const handleBlogCreation = async (event) => { 
         event.preventDefault()
-        const blog = { title, author, url }
-        const response = await blogService.createBlog(blog)
-        console.log(response)
-        setBlogs(blogs.concat(response)) 
-        setTitle('')
-        setAuthor('')
-        setUrl('')
+        if (!title || !author || !url) {
+            setNotification({message: 'Title, author, and Url required', type: 'error'})
+            setTimeout(() => {
+                setNotification({message: null, type: null})
+            }, 5000)
+        } else 
+        
+        try {
+            const blog = { title, author, url }
+            const response = await blogService.createBlog(blog)
+            setBlogs(blogs.concat(response)) 
+            setTitle('')
+            setAuthor('')
+            setUrl('')
+            setNotification({message: `Added ${blog.title} by ${blog.author}`, type: 'success'})
+            setTimeout(() => {
+                setNotification({message: null, type: null})
+            }, 5000)
+        } catch (exception) {
+            setNotification({message: exception, type: 'error'})
+            setTimeout(() => {
+                setNotification({message: null, type: null})
+            }, 5000)
+        }
     }
 
     return (
