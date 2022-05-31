@@ -18,3 +18,19 @@
     padding: 10px; 
     margin-bottom: 10px; 
 }
+
+.blogs {
+    margin: 5px; 
+    border: solid 0.5px black; 
+}
+
+.likeSection {
+    display: flex;
+}
+
+.likeButton {
+    height: 20px; 
+    align-self: center; 
+    margin-left: 5px; 
+}
+
