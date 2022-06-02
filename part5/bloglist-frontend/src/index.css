@@ -34,3 +34,12 @@
     margin-left: 5px; 
 }
 
+.blogTitle {
+    display: flex;
+}
+
+.blogTitle button { 
+    height: 20px; 
+    align-self: center; 
+    margin-left: 5px; 
+}

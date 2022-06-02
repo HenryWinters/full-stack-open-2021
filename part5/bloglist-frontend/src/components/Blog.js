@@ -7,7 +7,9 @@ import blogService from '../services/blogs'
 const Blog = ({ blog, setBlogs, user }) => {
   const [visible, setVisible] = useState(false)
 
-  const hideWhenVisible = { display: visible ? 'none' : '' }
+  const hideWhenVisible = { 
+    display: visible ? 'none' : 'flex',
+  }
   const showWhenVisible = { display: visible ? '' : 'none' }
 
   const toggleVisibility = () => {
@@ -37,47 +39,47 @@ const Blog = ({ blog, setBlogs, user }) => {
   }
 
   if (user.username === blog.user[0].username) {
-  
+    
     return (
       <div className='blogs'>
-        <div>
+        <div className='blogTitle' style={hideWhenVisible}>
           <p> {blog.title} {blog.author} </p>
-          <div style={hideWhenVisible}>
-            <button onClick={toggleVisibility}>View</button>
-          </div>
+          <button onClick={toggleVisibility}>View</button>
         </div>
         <div style={showWhenVisible}> 
+          <div className='blogTitle'>
+            <p> {blog.title} {blog.author} </p>
+            <button onClick={toggleVisibility}>Hide</button>
+          </div>
           <p>URL: {blog.url}</p>
           <div className='likeSection'>
             <p>Likes: {blog.likes}</p>
             <button className='likeButton' onClick={addLike}>Like</button>
           </div>
           <p>User: {blog.user[0].name}</p>
-          <button onClick={toggleVisibility}>Hide</button>
           <button onClick={handleDelete}>Remove</button>
         </div> 
       </div>  
     )
-  } else 
-
-  return (
-    <div className='blogs'>
-      <div>
-        <p> {blog.title} {blog.author} </p>
-        <div style={hideWhenVisible}>
+  } else return (
+      <div className='blogs'>
+        <div className='blogTitle' style={hideWhenVisible}>
+          <p> {blog.title} {blog.author} </p>
           <button onClick={toggleVisibility}>View</button>
         </div>
-      </div>
-      <div style={showWhenVisible}> 
-        <p>URL: {blog.url}</p>
-        <div className='likeSection'>
-          <p>Likes: {blog.likes}</p>
-          <button className='likeButton' onClick={addLike}>Like</button>
-        </div>
-        <p>User: {blog.user[0].name}</p>
-        <button onClick={toggleVisibility}>Hide</button>
-      </div> 
-    </div>  
+        <div style={showWhenVisible}> 
+          <div className='blogTitle'>
+            <p> {blog.title} {blog.author} </p>
+            <button onClick={toggleVisibility}>Hide</button>
+          </div>
+          <p>URL: {blog.url}</p>
+          <div className='likeSection'>
+            <p>Likes: {blog.likes}</p>
+            <button className='likeButton' onClick={addLike}>Like</button>
+          </div>
+          <p>User: {blog.user[0].name}</p>
+        </div> 
+      </div>  
 )}
 
 export default Blog
