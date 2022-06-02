@@ -20,7 +20,8 @@ const BlogForm = ({ blogs, setBlogs, setNotification, blogFormRef }) => {
             blogFormRef.current.toggleVisibility()
             const blog = { title, author, url }
             const response = await blogService.createBlog(blog)
-            setBlogs(blogs.concat(response)) 
+            const updatedBlogList = await blogService.getAll()
+            setBlogs(updatedBlogList)
             setTitle('')
             setAuthor('')
             setUrl('')
