@@ -15,7 +15,7 @@ const Blog = ({ blog, setBlogs }) => {
   }
 
   const addLike = async () => {
-    let blogWithOneMoreLike = {
+    const blogWithOneMoreLike = {
       title: blog.title, 
       author: blog.author, 
       url: blog.url, 

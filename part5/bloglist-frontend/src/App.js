@@ -15,9 +15,9 @@ const App = () => {
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
-      setBlogs( blogs )
+      setBlogs(blogs) 
     )  
-  }, [])
+  }, []) 
 
   useEffect(() => { 
     const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser')
