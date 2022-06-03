@@ -39,7 +39,7 @@ const Blog = ({ blog, setBlogs, user }) => {
   }
 
   if (user.username === blog.user[0].username) {
-    
+
     return (
       <div className='blogs'>
         <div className='blogTitle' style={hideWhenVisible}>
@@ -62,24 +62,24 @@ const Blog = ({ blog, setBlogs, user }) => {
       </div>
     )
   } else return (
-      <div className='blogs'>
-        <div className='blogTitle' style={hideWhenVisible}>
-          <p> {blog.title} {blog.author} </p>
-          <button onClick={toggleVisibility}>View</button>
-        </div>
-        <div style={showWhenVisible}>
-          <div className='blogTitle'>
-            <p> {blog.title} {blog.author} </p>
-            <button onClick={toggleVisibility}>Hide</button>
-          </div>
-          <p>URL: {blog.url}</p>
-          <div className='likeSection'>
-            <p>Likes: {blog.likes}</p>
-            <button className='likeButton' onClick={addLike}>Like</button>
-          </div>
-          <p>User: {blog.user[0].name}</p>
-        </div>
+    <div className='blogs'>
+      <div className='blogTitle' style={hideWhenVisible}>
+        <p> {blog.title} {blog.author} </p>
+        <button onClick={toggleVisibility}>View</button>
       </div>
-)}
+      <div style={showWhenVisible}>
+        <div className='blogTitle'>
+          <p> {blog.title} {blog.author} </p>
+          <button onClick={toggleVisibility}>Hide</button>
+        </div>
+        <p>URL: {blog.url}</p>
+        <div className='likeSection'>
+          <p>Likes: {blog.likes}</p>
+          <button className='likeButton' onClick={addLike}>Like</button>
+        </div>
+        <p>User: {blog.user[0].name}</p>
+      </div>
+    </div>
+  )}
 
 export default Blog

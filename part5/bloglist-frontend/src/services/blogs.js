@@ -1,11 +1,10 @@
 import axios from 'axios'
-import blogFormRef from '../components/Togglable'
 const baseUrl = '/api/blogs'
 
 
-let token = null 
+let token = null
 
-const setToken = (newToken) => { 
+const setToken = (newToken) => {
   token = `bearer ${newToken}`
 }
 
@@ -19,12 +18,12 @@ const createBlog = async (newObject) => {
     headers: { Authorization: token },
   }
   const response = await axios.post(baseUrl, newObject, config)
-  return response.data 
+  return response.data
 }
 
 const addLikeToBlog = async (id, updatedBlog) => {
   const response = await axios.put(baseUrl + '/' + id, updatedBlog)
-  return response.data 
+  return response.data
 }
 
 const deleteBlog = async (id) => {
