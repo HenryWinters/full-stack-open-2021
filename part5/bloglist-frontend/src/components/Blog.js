@@ -7,7 +7,7 @@ import blogService from '../services/blogs'
 const Blog = ({ blog, setBlogs, user }) => {
   const [visible, setVisible] = useState(false)
 
-  const hideWhenVisible = { 
+  const hideWhenVisible = {
     display: visible ? 'none' : 'flex',
   }
   const showWhenVisible = { display: visible ? '' : 'none' }
@@ -18,14 +18,14 @@ const Blog = ({ blog, setBlogs, user }) => {
 
   const addLike = async () => {
     const blogWithOneMoreLike = {
-      title: blog.title, 
-      author: blog.author, 
-      url: blog.url, 
+      title: blog.title,
+      author: blog.author,
+      url: blog.url,
       likes: blog.likes + 1,
       user: blog.user.id
     }
 
-    await blogService.addLikeToBlog(blog.id, blogWithOneMoreLike) 
+    await blogService.addLikeToBlog(blog.id, blogWithOneMoreLike)
     const updatedBlogList = await blogService.getAll()
     setBlogs(updatedBlogList)
   }
@@ -46,7 +46,7 @@ const Blog = ({ blog, setBlogs, user }) => {
           <p> {blog.title} {blog.author} </p>
           <button onClick={toggleVisibility}>View</button>
         </div>
-        <div style={showWhenVisible}> 
+        <div style={showWhenVisible}>
           <div className='blogTitle'>
             <p> {blog.title} {blog.author} </p>
             <button onClick={toggleVisibility}>Hide</button>
@@ -58,8 +58,8 @@ const Blog = ({ blog, setBlogs, user }) => {
           </div>
           <p>User: {blog.user[0].name}</p>
           <button onClick={handleDelete}>Remove</button>
-        </div> 
-      </div>  
+        </div>
+      </div>
     )
   } else return (
       <div className='blogs'>
@@ -67,7 +67,7 @@ const Blog = ({ blog, setBlogs, user }) => {
           <p> {blog.title} {blog.author} </p>
           <button onClick={toggleVisibility}>View</button>
         </div>
-        <div style={showWhenVisible}> 
+        <div style={showWhenVisible}>
           <div className='blogTitle'>
             <p> {blog.title} {blog.author} </p>
             <button onClick={toggleVisibility}>Hide</button>
@@ -78,8 +78,8 @@ const Blog = ({ blog, setBlogs, user }) => {
             <button className='likeButton' onClick={addLike}>Like</button>
           </div>
           <p>User: {blog.user[0].name}</p>
-        </div> 
-      </div>  
+        </div>
+      </div>
 )}
 
 export default Blog
