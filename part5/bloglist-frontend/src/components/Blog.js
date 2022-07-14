@@ -63,11 +63,11 @@ const Blog = ({ blog, setBlogs, user }) => {
     )
   } else return (
     <div className='blogs'>
-      <div className='blogTitle' style={hideWhenVisible}>
+      <div className='blogTitle defaultBlogDisplay' style={hideWhenVisible}>
         <p> {blog.title} {blog.author} </p>
         <button onClick={toggleVisibility}>View</button>
       </div>
-      <div style={showWhenVisible}>
+      <div className='fullBlogDisplay' style={showWhenVisible}>
         <div className='blogTitle'>
           <p> {blog.title} {blog.author} </p>
           <button onClick={toggleVisibility}>Hide</button>
