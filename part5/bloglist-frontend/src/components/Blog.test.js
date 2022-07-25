@@ -5,10 +5,24 @@ import userEvent from '@testing-library/user-event'
 import Blog from './Blog'
 import blogService from '../services/blogs'
 
+const blog = {
+    title: 'Component test title',
+    author: 'Component test author',
+    url: 'Component test url',
+    likes: 10,
+    user: 'Component test user'
+  }
+
+  const user = {
+      username: 'Component-test-user',
+      name: 'Component test user',
+      password: 'Test'
+  }
+
 describe('blog displays', () => {
     let container 
 
-    const blog = {
+    /*const blog = {
         title: 'Component test title',
         author: 'Component test author',
         url: 'Component test url',
@@ -20,7 +34,7 @@ describe('blog displays', () => {
           username: 'Component-test-user',
           name: 'Component test user',
           password: 'Test'
-      }
+      }*/
 
     beforeEach(() => {
         container = render(<Blog blog={blog} user={user}/>).container
@@ -45,38 +59,10 @@ describe('blog displays', () => {
     })
 })
 
-/*test('clickling like button twice calls event handler twice', async () => {
-    const blog = {
-        title: 'Component test title',
-        author: 'Component test author',
-        url: 'Component test url',
-        likes: 10,
-        user: 'Component test user'
-      }
-  
-      const user = {
-          username: 'Component-test-user',
-          name: 'Component test user',
-          password: 'Test'
-      }
-
-    const mockHandler = jest.fn()
-
-    render(<Blog blog={blog} user={user} />)
-
-    const testUser = userEvent.setup()
-    const viewButton = screen.getByText('View')
-    await testUser.click(viewButton)
-    const likeButton = screen.getByText('Like')
-    await testUser.click(likeButton)
-    await testUser.click(likeButton)
-    expect(mockHandler.mock.calls).toHaveLength(2)
-})*/
-
 jest.mock('../services/blogs')
 
 test('clickling like button twice calls event handler twice', async () => {
-    const blog = {
+    /*const blog = {
         title: 'Component test title',
         author: 'Component test author',
         url: 'Component test url',
@@ -88,9 +74,9 @@ test('clickling like button twice calls event handler twice', async () => {
           username: 'Component-test-user',
           name: 'Component test user',
           password: 'Test'
-      }
+      }*/
 
-   render(<Blog blog={blog} user={user} setBlogs={()=>console.log('')} />)
+   render(<Blog blog={blog} user={user} setBlogs={()=>null} />)
 
    const testUser = userEvent.setup()
    const viewButton = screen.getByText('View')
@@ -99,5 +85,9 @@ test('clickling like button twice calls event handler twice', async () => {
    await testUser.click(likeButton)
    await testUser.click(likeButton)
    expect(blogService.addLikeToBlog).toBeCalledTimes(2)
+})
+
+test('creating new blog form calls the event handler with the correct details', async () => {
+
 })
 

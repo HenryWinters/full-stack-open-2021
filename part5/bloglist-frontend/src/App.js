@@ -38,6 +38,8 @@ const App = () => {
     }, 5000)
   }
 
+  console.log(blogFormRef)
+
   if (user === null) {
     return (
       <div>

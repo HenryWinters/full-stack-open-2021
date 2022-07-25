@@ -39,7 +39,6 @@ const Blog = ({ blog, setBlogs, user }) => {
   }
 
   if (user.username === blog.user[0].username) {
-
     return (
       <div className='blogs'>
         <div className='blogTitle' style={hideWhenVisible}>
