@@ -31,5 +31,7 @@ test('creating new blog form calls the event handler with the correct details', 
     await testUser.click(submitButton)
 
     expect(blogService.createBlog).toBeCalledTimes(1)
-  
+    expect(blogService.createBlog.mock.calls[0][0].title).toBe('Component test title')
+    expect(blogService.createBlog.mock.calls[0][0].author).toBe('Component test author')
+    expect(blogService.createBlog.mock.calls[0][0].url).toBe('Component test url')
 })
