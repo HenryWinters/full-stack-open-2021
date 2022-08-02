@@ -32,4 +32,21 @@ describe('Blog app', function() {
     })
   })
 
+  describe('When logged in', function() {
+    beforeEach(function() {
+      cy.login({ username: 'Test Person', password: 'password' })
+    })
+
+    it('A blog can be created', function() {
+      cy.createBlog({
+        title: 'Test Blog',
+        author: 'Test Author',
+        url: 'Test Url',
+        likes: 100
+      })
+
+      cy.contains('Test Blog Test Author')
+
+    })
+  })
 })
