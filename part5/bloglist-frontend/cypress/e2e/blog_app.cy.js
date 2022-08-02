@@ -48,5 +48,20 @@ describe('Blog app', function() {
       cy.contains('Test Blog Test Author')
 
     })
+
+    it('A blog can be liked', function() { 
+      cy.createBlog({
+        title: 'Test Blog',
+        author: 'Test Author',
+        url: 'Test Url',
+        likes: 100
+      })
+
+      cy.contains('Test Blog').parent().find('Button').click()
+      cy.contains('Test Blog').parent().parent().find('#likeButton').click() 
+ 
+      cy.contains('Likes: 101')
+
+    })
   })
 })

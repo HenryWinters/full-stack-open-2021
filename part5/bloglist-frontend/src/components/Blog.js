@@ -53,7 +53,7 @@ const Blog = ({ blog, setBlogs, user }) => {
           <p>URL: {blog.url}</p>
           <div className='likeSection'>
             <p>Likes: {blog.likes}</p>
-            <button className='likeButton' onClick={addLike}>Like</button>
+            <button id='likeButton' className='likeButton' onClick={addLike}>Like</button>
           </div>
           <p>User: {blog.user[0].name}</p>
           <button onClick={handleDelete}>Remove</button>
@@ -74,7 +74,7 @@ const Blog = ({ blog, setBlogs, user }) => {
         <p>URL: {blog.url}</p>
         <div className='likeSection'>
           <p>Likes: {blog.likes}</p>
-          <button className='likeButton' onClick={addLike}>Like</button>
+          <button id='likeButton' className='likeButton' onClick={addLike}>Like</button>
         </div>
         <p>User: {blog.user[0].name}</p>
       </div>
