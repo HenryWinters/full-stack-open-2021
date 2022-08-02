@@ -49,19 +49,29 @@ describe('Blog app', function() {
 
     })
 
-    it('A blog can be liked', function() { 
-      cy.createBlog({
-        title: 'Test Blog',
-        author: 'Test Author',
-        url: 'Test Url',
-        likes: 100
+    describe('And a note exists', function() { 
+      beforeEach(function() {
+        cy.createBlog({
+          title: 'Test Blog',
+          author: 'Test Author',
+          url: 'Test Url',
+          likes: 100
+        })
       })
 
-      cy.contains('Test Blog').parent().find('Button').click()
-      cy.contains('Test Blog').parent().parent().find('#likeButton').click() 
- 
-      cy.contains('Likes: 101')
+      it('A blog can be liked', function() { 
+        cy.contains('Test Blog').parent().find('Button').click()
+        cy.contains('Test Blog').parent().parent().find('#likeButton').click() 
+   
+        cy.contains('Likes: 101')
+      })
 
+      it('A blog can be deleted by creator', function() {
+        cy.contains('Test Blog').parent().find('Button').click()
+        cy.contains('Test Blog').parent().parent().find('#removeButton').click()
+
+        cy.contains('Test Blog').should('not.exist')
+      })
     })
   })
 })
