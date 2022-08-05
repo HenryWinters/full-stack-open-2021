@@ -22,20 +22,6 @@ const blog = {
 describe('blog displays', () => {
     let container 
 
-    /*const blog = {
-        title: 'Component test title',
-        author: 'Component test author',
-        url: 'Component test url',
-        likes: 10,
-        user: 'Component test user'
-      }
-  
-      const user = {
-          username: 'Component-test-user',
-          name: 'Component test user',
-          password: 'Test'
-      }*/
-
     beforeEach(() => {
         container = render(<Blog blog={blog} user={user}/>).container
     })
@@ -62,19 +48,6 @@ describe('blog displays', () => {
 jest.mock('../services/blogs')
 
 test('clickling like button twice calls event handler twice', async () => {
-    /*const blog = {
-        title: 'Component test title',
-        author: 'Component test author',
-        url: 'Component test url',
-        likes: 10,
-        user: 'Component test user'
-      }
-  
-      const user = {
-          username: 'Component-test-user',
-          name: 'Component test user',
-          password: 'Test'
-      }*/
 
    render(<Blog blog={blog} user={user} setBlogs={()=>null} />)
 
@@ -87,7 +60,5 @@ test('clickling like button twice calls event handler twice', async () => {
    expect(blogService.addLikeToBlog).toBeCalledTimes(2)
 })
 
-test('creating new blog form calls the event handler with the correct details', async () => {
 
-})
 
