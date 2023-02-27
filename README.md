@@ -62,7 +62,7 @@ Application to practice working with external REST APIs. App calls the RestCount
 <p>
     <img alt='screenshot of countries app search bar' src='images/countries-app-search.png' width=25% />
     <img alt='screenshot of countries app showing USA details' src='images/countries-App-USA.png' width=25% />
-    <img alt='screenshot of countries app showing Australia details' src='images/countries-App-Australia.png' width=25% />
+    <img alt='screenshot of countries app showing Australia details' src='images/countries-app-australia.png' width=25% />
 </p>
 
 ### Anecdotes App 
