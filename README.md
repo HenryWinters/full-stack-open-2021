@@ -48,6 +48,7 @@ Full stack application built with React, Node.js, Express, and MongoDB. Users ca
 Full stack application built with React, Node.js, Express, and MongoDB. User can save contacts that will store in MongoDB. Contact list can be filtered. Deployed to Heroku. 
 
 [Front end repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part2/phonebook)
+
 [Back end repo link](https://github.com/HenryWinters/full-stack-open-part3)
 
 <img alt='screenshot of phonebook app' src='images/PhonebookApp.png' />
@@ -61,7 +62,7 @@ Application to practice working with external REST APIs. App calls the RestCount
 <p>
     <img alt='screenshot of countries app search bar' src='images/countries-app-search.png' width=25% />
     <img alt='screenshot of countries app showing USA details' src='images/countries-App-USA.png' width=25% />
-    <img alt='screenshot of countries app showing Australia details' src='images/countries-app-australia.png' width=25% />
+    <img alt='screenshot of countries app showing Australia details' src='images/countries-App-Australia.png' width=25% />
 </p>
 
 ### Anecdotes App 
