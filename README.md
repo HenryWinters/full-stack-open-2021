@@ -2,11 +2,16 @@
 
 ### *Deep Dive Into Modern Web Development* 
 
-### *University of Helsinki Department of Computer Science Course*
+### *University of Helsinki Department of Computer Science*
 
-The course covers modern web application development with JavaScript. The main focus is building single page applciations with ReactJS that use REST APIs built with Node.js. The course covers testing, configuration and environment management, the use of databases for storing the application's data, amongst other things. 
+## Table of contents
+* [Course Information](#course-information)
+* [Course certificate](#course-certificate)
+* [Projects](#projects)
 
-![Course Certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/4e4469bee82867ddfa7c755121379756)
+## Course Information
+
+The course covers modern web application development with JavaScript. The main focus is building single page applciations with ReactJS that use REST APIs built with Node.js. The course covers testing, configuration and environment management, the use of databases for storing the application's data, amongst other things.
 
 ### [Part 1 - Introduction to React](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part1)
 
@@ -20,7 +25,13 @@ The course covers modern web application development with JavaScript. The main f
 
 ### [Part 6 - Advanced state management](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part6)
 
-This course consisted of many hands-on exercises and projects that we were to complete on our own. Here are a few of the most notable ones I completed as part of this course: 
+## Course Certificate 
+
+![Course Certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/4e4469bee82867ddfa7c755121379756)
+
+## Projects
+
+This course consisted of many hands-on exercises and projects. Here are a few of the most notable ones I completed as part of this course: 
 
 ### Blog App
 
