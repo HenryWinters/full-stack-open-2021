@@ -67,7 +67,7 @@ Application to practice working with external REST APIs. App calls the RestCount
 
 ### Anecdotes App 
 
-App built with React and Redux to practice managing state with Redux. User can add and vote on their favorite anecdotes. Anecdotes automatically sort by most votes. 
+App built with React and Redux to practice managing state with Redux. Users can add and vote on their favorite anecdotes. Anecdotes automatically sort by most votes. 
 
 [Repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part6/redux-anecdotes)
 
