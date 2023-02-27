@@ -1,8 +1,8 @@
 # [Full Stack Open](https://fullstackopen.com/en/)
 
-## Deep Dive Into Modern Web Development 
+### *Deep Dive Into Modern Web Development* 
 
-## University of Helsinki Department of Computer Science Course
+### *University of Helsinki Department of Computer Science Course*
 
 The course covers modern web application development with JavaScript. The main focus is building single page applciations with ReactJS that use REST APIs built with Node.js. The course covers testing, configuration and environment management, the use of databases for storing the application's data, amongst other things. 
 
@@ -27,6 +27,7 @@ This course consisted of many hands-on exercises and projects that we were to co
 Full stack application built with React, Node.js, Express, and MongoDB. Users can log in and post blogs. Blog post will add to blog feed and include blog details and like button. Token based authentication to allow only the user who created the blog to delete it. Robust testing with jest and end to end testing with cypress. 
 
 [Front end repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part5/bloglist-frontend)
+
 [Back end repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part4/blog-list)
 
 <img alt='screenshot of blog app' src='images/BlogApp.png' />
@@ -56,9 +57,11 @@ Application to practice working with external REST APIs. App calls the RestCount
 
 App built with React and Redux to practice managing state with Redux. User can add and vote on their favorite anecdotes. Anecdotes automatically sort by most votes. 
 
+[Repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part6/redux-anecdotes)
+
 <img alt='screenshot of anecdotes app' src='images/anecdotes-app.png' width=25% />
 
-[Repo link](https://github.com/HenryWinters/full-stack-open-2021/tree/main/part6/redux-anecdotes)
+
 
 
 
