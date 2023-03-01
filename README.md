@@ -31,7 +31,7 @@ The course covers modern web application development with JavaScript. The main f
 
 ## Projects
 
-This course consisted of many hands-on exercises and projects. Here are a few of the most notable ones I completed as part of this course: 
+This course consisted of many hands-on exercises and projects. Here are a few of the most notable ones I completed as part of this course. The goal of these projects was *functionality* and not design, so CSS styling is very limited.  
 
 ### Blog App
 
